@@ -3,12 +3,11 @@ package ru.job4j.oop;
 public class Jukebox {
 
     public void music(int position) {
-        if (position == 1) {
-            System.out.println("Пусть бегут неуклюже\nТра-ля-ля, тра-ля-ля\n");
-        } else if (position == 2) {
-            System.out.println("Рыбки уснули в пруду-у-у...\n");
-        } else {
-            System.out.println("Песня не найдена\n");
+        String sep = System.lineSeparator();
+        switch (position) {
+            case 1 -> System.out.println("Пусть бегут неуклюже" + sep + "Тра-ля-ля, тра-ля-ля" + sep);
+            case 2 -> System.out.println("Рыбки уснули в пруду-у-у..." + sep);
+            default -> System.out.println("Песня не найдена" + sep);
         }
     }
 
