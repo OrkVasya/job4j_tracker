@@ -12,20 +12,13 @@ public class Matches {
             String player = turn ? "Первый игрок" : "Второй игрок";
             System.out.print(player + " введите число от 1 до " + (Math.min(count, 3)) + ": ");
             int matches = Integer.parseInt(input.nextLine());
-            turn = !turn;
-            while (matches < 1 || matches > Math.min(count, 3)) {
-                if (count == 1) {
-                    System.out.println("Должна быть 1 спичка.");
-                } else if (count <= 3) {
-                    System.out.println("Должно быть от 1 до " + count + " спичек.");
-                } else {
-                    System.out.println("Должно быть от 1 до 3 спичек.");
-                }
-                System.out.print(player + " введите число от 1 до " + (Math.min(count, 3)) + ": ");
-                matches = Integer.parseInt(input.nextLine());
+            if (matches < 1 || matches > Math.min(count, 3)) {
+                System.out.println("Значение должно быть от 1 до " + (Math.min(count, 3)));
+            } else {
+                count -= matches;
+                turn = !turn;
+                System.out.println("Спичек на столе: " + count);
             }
-            count -= matches;
-            System.out.println("Спичек на столе: " + count);
         }
         if (!turn) {
             System.out.println("Выиграл первый игрок");
