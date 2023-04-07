@@ -10,10 +10,10 @@ public class Matches {
         int count = 11;
         while (count > 0) {
             String player = turn ? "Первый игрок" : "Второй игрок";
-            System.out.print(player + " введите число от 1 до " + (Math.min(count, 3)) + ": ");
+            System.out.print(player + " введите число от 1 до " + Math.min(count, 3) + ": ");
             int matches = Integer.parseInt(input.nextLine());
             if (matches < 1 || matches > Math.min(count, 3)) {
-                System.out.println("Значение должно быть от 1 до " + (Math.min(count, 3)));
+                System.out.println("Значение должно быть от 1 до " + Math.min(count, 3));
             } else {
                 count -= matches;
                 turn = !turn;
