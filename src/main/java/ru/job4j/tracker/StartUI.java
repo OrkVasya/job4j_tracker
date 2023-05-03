@@ -24,7 +24,7 @@ public class StartUI {
         }
     }
 
-    private static void createItem(Input input, Tracker tracker) {
+    public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ===");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
@@ -32,7 +32,7 @@ public class StartUI {
         System.out.println("Добавленная заявка: " + item);
     }
 
-    private static void showAllItems(Tracker tracker) {
+    public static void showAllItems(Tracker tracker) {
         System.out.println("=== Show all items ===");
         Item[] items = tracker.findAll();
         if (items.length > 0) {
@@ -44,7 +44,7 @@ public class StartUI {
         }
     }
 
-    private static void editItem(Input input, Tracker tracker) {
+    public static void editItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ===");
         int id = input.askInt("Enter id: ");
         String name = input.askStr("Enter name: ");
@@ -56,8 +56,7 @@ public class StartUI {
         }
     }
 
-    /*для коммита*/
-    private static void deleteItem(Input input, Tracker tracker) {
+    public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ===");
         int id = input.askInt("Enter id: ");
         if (tracker.delete(id)) {
@@ -67,7 +66,7 @@ public class StartUI {
         }
     }
 
-    private static void findItemByID(Input input, Tracker tracker) {
+    public static void findItemByID(Input input, Tracker tracker) {
         System.out.println("=== Find item by id ===");
         int id = input.askInt("Enter id: ");
         Item item = tracker.findById(id);
@@ -78,7 +77,7 @@ public class StartUI {
         }
     }
 
-    private static void findItemByName(Input input, Tracker tracker) {
+    public static void findItemByName(Input input, Tracker tracker) {
         System.out.println("=== Find items by name ===");
         String name = input.askStr("Enter name: ");
         Item[] items = tracker.findByName(name);
@@ -91,7 +90,7 @@ public class StartUI {
         }
     }
 
-    private void showMenu() {
+    public void showMenu() {
         String[] menu = {
                 "Add new Item", "Show all items", "Edit item",
                 "Delete item", "Find item by id", "Find items by name",
