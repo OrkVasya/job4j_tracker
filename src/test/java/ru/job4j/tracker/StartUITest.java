@@ -35,7 +35,9 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
-        String[] answers = { String.valueOf(item.getId()) };
+        String[] answers = {
+                String.valueOf(item.getId())
+        };
         StartUI.deleteItem(new StubInput(answers), tracker);
         Item edited = tracker.findById(item.getId());
         assertThat(edited).isEqualTo(null);
