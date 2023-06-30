@@ -7,6 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FactTest {
     @Test
+    public void whenCorrect() {
+        Fact fact = new Fact();
+        int rsl = fact.calc(3);
+        assertThat(rsl).isEqualTo(6);
+    }
+
+    @Test
     public void whenException() {
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
