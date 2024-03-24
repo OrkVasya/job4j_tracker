@@ -13,21 +13,19 @@ public class ReconstructPhrase {
 
     private String getEvenElements() {
         var result = new StringBuilder();
-        int i = 0;
-        for (Character evenElement : evenElements) {
-            if (i % 2 == 0) {
-                result.append(evenElement);
-            }
-            i++;
+        var len = evenElements.size();
+        for (var i = 0; i < len; i += 2) {
+            result.append(evenElements.pollFirst());
+            evenElements.pollFirst();
         }
         return result.toString();
     }
 
     private String getDescendingElements() {
         var result = new StringBuilder();
-        var iter = descendingElements.descendingIterator();
-        while (iter.hasNext()) {
-            result.append(iter.next());
+        var len = descendingElements.size();
+        for (var i = 0; i < len; i++) {
+            result.append(descendingElements.pollLast());
         }
         return result.toString();
     }
