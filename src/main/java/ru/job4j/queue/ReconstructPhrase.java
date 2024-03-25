@@ -13,8 +13,8 @@ public class ReconstructPhrase {
 
     private String getEvenElements() {
         var result = new StringBuilder();
-        var len = evenElements.size();
-        for (var i = 0; i < len; i += 2) {
+        var len = evenElements.size() / 2;
+        for (var i = 0; i < len; i++) {
             result.append(evenElements.pollFirst());
             evenElements.pollFirst();
         }
