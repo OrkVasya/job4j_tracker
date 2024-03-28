@@ -13,14 +13,11 @@ public class BankService {
     }
 
     public void deleteUser(String passport) {
-        users.remove(findByPassport(passport));
+        users.remove(new User(passport, ""));
     }
 
     public void addAccount(String passport, Account account) {
         var user = findByPassport(passport);
-        if (user == null) {
-            return;
-        }
         var accounts = users.get(user);
         if (!accounts.contains(account)) {
             accounts.add(account);
@@ -38,13 +35,12 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         var user = findByPassport(passport);
-        if (user == null) {
-            return null;
-        }
-        var accounts = users.get(user);
-        for (Account account : accounts) {
-            if (account.getRequisite().equals(requisite)) {
-                return account;
+        if (user != null) {
+            var accounts = users.get(user);
+            for (Account account : accounts) {
+                if (account.getRequisite().equals(requisite)) {
+                    return account;
+                }
             }
         }
         return null;
@@ -53,18 +49,17 @@ public class BankService {
     public boolean transferMoney(String soursePassport, String sourceRequisite,
                                  String destPassport, String destRequisite,
                                  double amount) {
-        var result = false;
         var sourceAcc = findByRequisite(soursePassport, sourceRequisite);
         var destAcc = findByRequisite(destPassport, destRequisite);
         if (sourceAcc == null || destAcc == null) {
-            return result;
+            return false;
         }
         if (sourceAcc.getBalance() >= amount) {
             sourceAcc.setBalance(sourceAcc.getBalance() - amount);
             destAcc.setBalance(destAcc.getBalance() + amount);
-            result = true;
+            return true;
         }
-        return result;
+        return false;
     }
 
     public List<Account> getAccounts(User user) {
