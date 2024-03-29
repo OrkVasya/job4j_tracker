@@ -18,12 +18,11 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         var user = findByPassport(passport);
-        if (user == null) {
-            return;
-        }
-        var accounts = users.get(user);
-        if (!accounts.contains(account)) {
-            accounts.add(account);
+        if (user != null) {
+            var accounts = users.get(user);
+            if (!accounts.contains(account)) {
+                accounts.add(account);
+            }
         }
     }
 
