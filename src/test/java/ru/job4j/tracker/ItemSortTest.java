@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ItemSortTest {
     @Test
@@ -12,15 +12,8 @@ public class ItemSortTest {
         Item last = new Item("last");
         Item a = new Item("a");
 
-        var items = new ArrayList<Item>();
-        items.add(first);
-        items.add(last);
-        items.add(a);
-
-        var expected = new ArrayList<Item>();
-        expected.add(a);
-        expected.add(first);
-        expected.add(last);
+        var items = Arrays.asList(first, last, a);
+        var expected = Arrays.asList(a, first, last);
 
         items.sort(new ItemAscByName());
         assertThat(items.equals(expected)).isTrue();
@@ -32,15 +25,8 @@ public class ItemSortTest {
         Item last = new Item("last");
         Item a = new Item("a");
 
-        var items = new ArrayList<Item>();
-        items.add(first);
-        items.add(last);
-        items.add(a);
-
-        var expected = new ArrayList<Item>();
-        expected.add(last);
-        expected.add(first);
-        expected.add(a);
+        var items = Arrays.asList(first, last, a);
+        var expected = Arrays.asList(last, first, a);
 
         items.sort(new ItemDescByName());
         assertThat(items.equals(expected)).isTrue();
