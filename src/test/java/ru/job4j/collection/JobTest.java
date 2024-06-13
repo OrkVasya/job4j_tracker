@@ -66,6 +66,4 @@ public class JobTest {
         );
         assertThat(rsl).isLessThan(0);
     }
-
-    
 }
